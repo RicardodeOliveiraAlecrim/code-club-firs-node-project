@@ -1,12 +1,20 @@
-const express = require("express")
+
+const express = require("express");
+
+const cors = require('cors');
 
 const app = express()
 
 const uuid = require("uuid")
 
+app.use(cors());
+
 const port = 3001
 
 app.use(express.json())
+
+
+
 
 /* query params
 app.get('/users', (request, response) => {
@@ -18,8 +26,6 @@ app.get('/users', (request, response) => {
     return response.json({ name, age, })
 })
 */
-
-
 
 /* query and route params
 
@@ -92,12 +98,9 @@ app.put('/users/:id', checkUserId, (request, response) => {
     
 })
 
-app.delete('/users/:id',checkUserId, (request, response) => {
+app.delete('/users/:id',checkUserId, (request, response) => {   
 
-   
-
-    users.splice(request.UserIndex,1)
-   
+    users.splice(request.UserIndex,1)   
 
     return response.status(204).json()
 
